@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/favicon.ico">
+    <title>ピクセルピア</title>
+</head>
+<body class="dotgothic16-regular">
+    <nav>
+        <ul>
+            <li>
+                <a href="#">
+                <img class="pixel" src="img/pixel peer.png" alt="ロゴ">
+                </a>
+            </li>
+            <li>何か入れる！</li>
+        </ul>
+        <p class="text">
+          『ピクセルピア』にようこそ！<br>
+            …以下の注意書きをお読みください…<br>
+            …メインメニューは下のアプリのダウンロードしてお進みください…
+        </p>
+    </nav>
+    <div class="cover">
+      <div class="div">
+        <img class="dolphin pixel" src="img/iruka.png" alt="">
+        <img class="smartphone" src="img/sumaho.png" alt="">
+        <p>アプリケーション<br>
+          <span class="dolphin2">イルカ</span><span class="wo">を</span><br>
+          ダウンロードして、<br>
+          新しい世界を体験しよう！
+        </p>
+        <img class="rodo" src="img/daunro-do.gif" alt="">
+      </div>
+    </div>
+    
+
+    
+    <div class="scroll-wrapper">
+        <div class="scroll-track">
+          <div class="item">Item 1</div>
+          <div class="item">Item 2</div>
+          <div class="item">Item 3</div>
+          <div class="item">Item 4</div>
+          <!-- 以下、複製 -->
+        </div>
+    </div>
+    
+    <div>
+        <div><img src="" alt=""></div>
+        <div><img src="" alt=""></div>
+        <div></div>
+    </div>
+<footer>
+    <p>Copyright©2025</p>
+</footer>
+<script>
+const dolphin = document.querySelector('.dolphin');
+const rodo = document.querySelector('.rodo');
+let isClicked = false;
+dolphin.addEventListener('click', () => {
+  if (isClicked) return; // 多重クリック防止
+  isClicked = true;
+  console.log('クリックされました！');
+  // ロードを表示
+  rodo.style.display = 'block';
+
+  // 5秒後に別のページへ遷移
+  setTimeout(() => {
+    window.location.href = 'html/tutorial.html';
+  }, 5000); // ← 5000ms = 5秒（好きに変えてOK）
+});
+
+
+
+/*------以下スクロール------*/
+const track = document.querySelector('.scroll-track');
+track.innerHTML += track.innerHTML; // ここ大事！ループ用に複製
+
+const item = document.querySelector('.item');
+const style = getComputedStyle(item);
+const itemWidth = 1030; // ← .item の幅 + margin
+
+  console.log('itemWidth:', itemWidth);
+  console.log('scrollWidth:', track.scrollWidth);
+  console.log('ループリセット値:', track.scrollWidth / 2);
+
+let offset = -240;
+let stepCount = 0;
+const delay = 3500;
+
+
+function scrollStep() {
+  offset += itemWidth;
+
+  // scrollWidthの半分を超えたらリセット
+  if (offset >= (itemWidth * (track.children.length / 2))) {
+    // リセット位置の直前に移動（ジャンプ）
+    track.style.transition = 'none';
+    offset = -240;
+    track.style.transform = `translateX(0px)`;
+
+    // 少し遅らせて次のアイテムへ（スクロール続けて見せる！）
+    setTimeout(() => {
+      offset += itemWidth;
+      track.style.transition = 'transform 0.5s ease';
+      track.style.transform = `translateX(-${offset}px)`;
+
+      setTimeout(scrollStep, delay + 500);
+    }, 20); // ← ここ重要！ほんの少しだけ遅らせる
+    return;
+  }
+
+  // 普通のスクロール
+  track.style.transition = 'transform 1s ease';
+  track.style.transform = `translateX(-${offset}px)`;
+
+  setTimeout(scrollStep, delay + 500);
+}
+
+scrollStep();
+</script>
+</body>
+</html>

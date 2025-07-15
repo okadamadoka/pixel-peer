@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/tutorial.css">
+    <title>ダ ウソロ?＿ド</title>
+</head>
+<body class="dotgothic16-regular ">
+    <div id="loader">Now loading…</div>
+    <div id="content" style="opacity:0;">
+        
+<script>
+window.onload = () => {
+  const loader = document.getElementById('loader');
+  const content = document.getElementById('content');
+
+  loader.style.opacity = 0; // フェードアウト開始
+
+  setTimeout(() => {
+    loader.style.display = 'none';
+    content.style.opacity = 1; // フェードイン開始
+  }, 1000); // 1秒待つ
+};
+</script>
+</body>
+</html>

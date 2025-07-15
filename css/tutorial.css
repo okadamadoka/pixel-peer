@@ -1,0 +1,33 @@
+.dotgothic16-regular {
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url(../img/S__98738196.jpg);
+    background-size: cover;
+    background-position: center 10%;
+}
+
+#loader {
+  position: fixed;
+  top:0; left:0; width: 100vw;height: 100vh;
+  background: #fff;
+  color: #078ba0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  z-index: 9999;
+}
+#loader {
+  transition: opacity 1s ease; /* 1秒かけてフェードアウト */
+}
+
+#content {
+  transition: opacity 1s ease; /* 1秒かけてフェードイン */
+}

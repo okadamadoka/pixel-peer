@@ -1,0 +1,143 @@
+.dotgothic16-regular {
+  font-family: "DotGothic16", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    overflow: auto;
+}
+body{
+    overflow: hidden;
+    color: #888;
+    background-color: rgb(247, 247, 247);
+    
+}
+ul{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
+li{
+    margin: 1.5em;
+}
+nav{
+    position: relative;
+}
+.text{
+    position: absolute;
+    right: 32.5%;
+    top: 50%;
+}
+img{
+    width: 25vw;
+}
+.cover{
+    position: relative; /* 親要素に対して相対位置を設定 */
+    width: 100vw;
+    height: 70vh;
+    margin-bottom: 5em;
+}
+.div{
+    margin: 0 auto;
+}
+.cover img,.cover p{
+    position: absolute; /* 画像を絶対位置で配置 */
+}
+.rodo{
+    top: 80%;
+    left: 45%;
+    width: 150px;
+    height: 35px;
+    display: none;
+}
+.dolphin{
+    top: 40%; /* 親要素の中央 */
+    left: 49.8%; /* 親要素の中央 */
+    transform: translate(-50%, -50%);
+    width: 64px;
+    height: 64px;
+    animation: pulse 2s infinite ease-in-out;
+    cursor: pointer;
+}
+.pixel{
+  image-rendering: pixelated;
+}
+@keyframes pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+}
+.cover p{
+    color: #2e2e2e;
+    top: 60%; /* 親要素の中央 */
+    left: 50%; /* 親要素の中央 */
+    transform: translate(-50%, -50%);
+    line-height: 1.3;
+}
+.dolphin2{
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+}
+.wo{
+    font-size: .8em;
+    display: inline-block; /* ← 回転に必要 */
+    transform: rotate(15deg); /* ← 回転の角度（単位は deg） */
+    
+}
+.smartphone{
+    width: 320px;
+    height: 600px;
+    z-index: -5; /* 優先的に重ねるためのz-index */
+    top: 55%; /* 親要素の中央 */
+    left: 50%; /* 親要素の中央 */
+    transform: translate(-50%, -50%);
+}
+/*-----------スクロールbox--------------*/
+
+ 
+.scroll-wrapper {
+    width: 100%;         /* 親コンテナの幅 */
+    overflow: hidden;    /* 横スクロールを有効にする */
+    white-space: nowrap; /* 中身を横並びにする */
+    scroll-behavior: smooth;
+    position: relative;  /* 矢印を絶対位置に配置するために必要 */
+    scrollbar-width: none;         /* Firefoxで非表示 */
+    -ms-overflow-style: none;      /* IEで非表示 */
+    margin: 2em 0;
+}
+.scroll-wrapper::-webkit-scrollbar {
+    display: none;                 /* Chrome, Safariで非表示 */
+}
+
+.scroll-track {
+    display: inline-block; /* 子要素を横並びにする */
+    white-space: nowrap;   /* 子要素の折り返しを防ぐ */
+    animation: scrollLoop 20s linear infinite;
+}
+
+  .item {
+    display: inline-block;
+    width: 1000px;
+    height: 450px;
+    background-color: lightblue;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 150px;
+    border-radius: 20px;
+    padding-bottom: 40px;
+  }
+  .a{
+    margin-right: 50px;
+  }
+/*-----------スクロールbox--------------*/
+p{
+    text-align: center;
+}
