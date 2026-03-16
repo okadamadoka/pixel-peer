@@ -7,123 +7,167 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Kurenaido&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/tutorial.css">
     <link rel="icon" href="img/favicon.ico">
     <title>ピクセルピア</title>
 </head>
 <body class="dotgothic16-regular">
+  <div id="loader">Now loading…</div>
+  <div class="game-wrapper"></div>
     <nav>
-        <ul>
+        <ul class="top">
             <li>
                 <a href="#">
-                <img class="pixel" src="img/pixel peer.png" alt="ロゴ">
+                <img class="pixel" src="img/pixel peer.png" alt="ロゴ-ピクセルピア">
                 </a>
             </li>
-            <li>何か入れる！</li>
         </ul>
-        <p class="text">
-          『ピクセルピア』にようこそ！<br>
-            …以下の注意書きをお読みください…<br>
-            …メインメニューは下のアプリのダウンロードしてお進みください…
-        </p>
     </nav>
-    <div class="cover">
-      <div class="div">
-        <img class="dolphin pixel" src="img/iruka.png" alt="">
-        <img class="smartphone" src="img/sumaho.png" alt="">
-        <p>アプリケーション<br>
-          <span class="dolphin2">イルカ</span><span class="wo">を</span><br>
-          ダウンロードして、<br>
-          新しい世界を体験しよう！
-        </p>
-        <img class="rodo" src="img/daunro-do.gif" alt="">
-      </div>
+    <div class="text">
+      <p class="bold">『ピクセルピア』にようこそ！</p>
+      <p class="mtop">
+        …以下の注意書きをお読みください…<br>
+        …本編は下のアプリを<span class="bold">ダウンロード</span>してお進みください…
+      </p>
     </div>
-    
+  <div class="div">
+      <img class="dolphin" src="img/iruka.png" alt="イルカのアイコン">
+      <p>アプリケーション<br>
+        <span class="bold2">イルカ</span><span class="wo">を</span><br>
+        ダウンロードして、<br>
+        新しい世界を体験しよう！
+      </p>
+      <img class="rodo" src="img/daunro-do.gif" alt="ダウンロードバー">
+  </div>
+  <div class="line"></div>
+  <p class="text bold">…注意書き…</p>
 
-    
-    <div class="scroll-wrapper">
-        <div class="scroll-track">
-          <div class="item">Item 1</div>
-          <div class="item">Item 2</div>
-          <div class="item">Item 3</div>
-          <div class="item">Item 4</div>
-          <!-- 以下、複製 -->
+  <p class="mtop">
+    このゲームはクリック操作の脱出ゲームです<br>
+    気になるところを調べながら進めてみてください
+  </p>
+  
+  <div class="scroll-cover">
+        <div class="items">
+          <img class="item" src="img/00.png" alt="四コマ漫画">
         </div>
+    <div class="arrow-left">&#x2B9C;</div> <!-- 左矢印 -->
+    <div class="arrow-right">&#x2B9E;</div> <!-- 右矢印 -->
+
+    <div class="dots">
+      <span class="dot" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
+      <span class="dot" data-index="2"></span>
+      <span class="dot" data-index="3"></span>
     </div>
-    
-    <div>
-        <div><img src="" alt=""></div>
-        <div><img src="" alt=""></div>
-        <div></div>
-    </div>
-<footer>
-    <p>Copyright©2025</p>
-</footer>
+  </div>
+   
+  <footer class="footer-cover">
+    <ul class="foot">
+        <li class="saito">
+          <p>…音源をお借りしている素材サイト様…</p>
+          <a href="https://pocket-se.info/" target="_blank" rel="noopener noreferrer">
+            <img src="img/bnr_pocket-se.jpg" alt="ポケットサウンド">
+          </a>
+          <a href="http://www.hmix.net/" target="_blank" rel="noopener noreferrer">
+            <img src="img/hmix1.gif" alt="H/MIX GALLERY">
+          </a>
+        </li>
+    </ul>
+    <p class="copy">
+      © 2026 madoka ｜ This game is a work of fiction.<br>
+      <span>このゲームはフィクションです。実在の人物・出来事とは関係ありません。</span>
+    </p>
+  </footer>
+  
 <script>
+/*------イルカ-ダウンロード------*/
 const dolphin = document.querySelector('.dolphin');
 const rodo = document.querySelector('.rodo');
 let isClicked = false;
+const audio = new Audio("mp3/piko.mp3");
+audio.load();
 dolphin.addEventListener('click', () => {
   if (isClicked) return; // 多重クリック防止
   isClicked = true;
-  console.log('クリックされました！');
+  audio.play();
+  //console.log('クリックされました！');
   // ロードを表示
   rodo.style.display = 'block';
 
   // 5秒後に別のページへ遷移
   setTimeout(() => {
-    window.location.href = 'html/tutorial.html';
+    window.location.href = 'html/1.html';
   }, 5000); // ← 5000ms = 5秒（好きに変えてOK）
 });
 
-
-
-/*------以下スクロール------*/
-const track = document.querySelector('.scroll-track');
-track.innerHTML += track.innerHTML; // ここ大事！ループ用に複製
-
+/*------四コマ漫画-----*/
+const scrollContainer = document.querySelector('.scroll-wrapper');
+const scrollContent = document.querySelector('.scroll-track');
+const arrowLeft = document.querySelector('.arrow-left');
+const arrowRight = document.querySelector('.arrow-right');
 const item = document.querySelector('.item');
-const style = getComputedStyle(item);
-const itemWidth = 1030; // ← .item の幅 + margin
+let currentIndex = 0; // いま表示してるアイテムの番号
 
-  console.log('itemWidth:', itemWidth);
-  console.log('scrollWidth:', track.scrollWidth);
-  console.log('ループリセット値:', track.scrollWidth / 2);
+const directions = [
+  "img/00.png",
+  "img/01.png",
+  "img/04.png",
+  "img/03.png"
+];
+function loadItemsFromRoom(el){
+  item.src = directions[el];
+}
+function setupNavigation() {
+  arrowLeft.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + directions.length) % directions.length;
+    loadItemsFromRoom(currentIndex);
+    updateDots();
+  });
 
-let offset = -240;
-let stepCount = 0;
-const delay = 3500;
+  arrowRight.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % directions.length;
+    loadItemsFromRoom(currentIndex);
+    updateDots();
+  });
+}
+setupNavigation();
+loadItemsFromRoom(currentIndex);
+/*------ボタン------*/
+const dots = document.querySelectorAll('.dot');
 
-
-function scrollStep() {
-  offset += itemWidth;
-
-  // scrollWidthの半分を超えたらリセット
-  if (offset >= (itemWidth * (track.children.length / 2))) {
-    // リセット位置の直前に移動（ジャンプ）
-    track.style.transition = 'none';
-    offset = -240;
-    track.style.transform = `translateX(0px)`;
-
-    // 少し遅らせて次のアイテムへ（スクロール続けて見せる！）
-    setTimeout(() => {
-      offset += itemWidth;
-      track.style.transition = 'transform 0.5s ease';
-      track.style.transform = `translateX(-${offset}px)`;
-
-      setTimeout(scrollStep, delay + 500);
-    }, 20); // ← ここ重要！ほんの少しだけ遅らせる
-    return;
-  }
-
-  // 普通のスクロール
-  track.style.transition = 'transform 1s ease';
-  track.style.transform = `translateX(-${offset}px)`;
-
-  setTimeout(scrollStep, delay + 500);
+function updateDots() {
+  dots.forEach(dot => dot.classList.remove('active'));
+  dots[currentIndex].classList.add('active');
 }
 
-scrollStep();
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    currentIndex = Number(dot.dataset.index);
+    loadItemsFromRoom(currentIndex);
+    updateDots();
+  });
+});
+
+// 初期状態
+updateDots();
+
+/*------ローディング------*/
+
+Promise.all([
+  new Promise(resolve => window.addEventListener('load', resolve)), // ページ読み込み完了
+  new Promise(resolve => setTimeout(resolve, 1500)) // 最低1.5秒待つ
+]).then(() => {
+  const loader = document.getElementById('loader');
+  const game = document.querySelector('.game-wrapper');
+
+  loader.style.opacity = 0; // フェードアウト
+
+  setTimeout(() => {
+    loader.remove();
+    game.remove();
+  }, 500);
+});
 </script>
 </body>
 </html>

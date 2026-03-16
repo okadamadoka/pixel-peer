@@ -14,130 +14,194 @@ body{
     overflow: hidden;
     color: #888;
     background-color: rgb(247, 247, 247);
-    
 }
-ul{
+nav{
+    background-color: rgba(101, 219, 255, 0.1);
+}
+.top{
     display: flex;
-    justify-content: space-between;
     list-style-type: none;
 }
 li{
     margin: 1.5em;
 }
-nav{
-    position: relative;
-}
-.text{
-    position: absolute;
-    right: 32.5%;
-    top: 50%;
+.pixel{
+  image-rendering: pixelated;
+  width: 15vw;
 }
 img{
     width: 25vw;
 }
-.cover{
-    position: relative; /* 親要素に対して相対位置を設定 */
-    width: 100vw;
-    height: 70vh;
-    margin-bottom: 5em;
+.text{
+    margin-top: 3em;
+    text-align: center;
+}
+.bold{
+    font-size: 1.2em;
+    font-weight: bold;
+    z-index: 1;
+}
+.mtop{
+    margin-top: 1em;
+    text-align: center;
 }
 .div{
-    margin: 0 auto;
+    width: 270px;
+    height: 410px;
+    margin: 3em auto;
+    background-image: url(img/sumaho.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 180px 30px 0;
 }
-.cover img,.cover p{
-    position: absolute; /* 画像を絶対位置で配置 */
+.div p{
+    display: block;
+    text-align: center;
+    margin:40px auto;
+    line-height: 1.3;
+    color: #2e2e2e;
+    z-index: 1;
 }
-.rodo{
-    top: 80%;
-    left: 45%;
-    width: 150px;
-    height: 35px;
-    display: none;
-}
+/*-----------中身--------------*/
 .dolphin{
-    top: 40%; /* 親要素の中央 */
-    left: 49.8%; /* 親要素の中央 */
-    transform: translate(-50%, -50%);
+    display: block;
+    margin: 0 auto;
     width: 64px;
-    height: 64px;
     animation: pulse 2s infinite ease-in-out;
     cursor: pointer;
-}
-.pixel{
-  image-rendering: pixelated;
+    z-index: 1;
+    image-rendering: pixelated;
 }
 @keyframes pulse {
     0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
+        transform: scale(1);
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.1);
+        transform: scale(1.1);
     }
 }
-.cover p{
-    color: #2e2e2e;
-    top: 60%; /* 親要素の中央 */
-    left: 50%; /* 親要素の中央 */
-    transform: translate(-50%, -50%);
-    line-height: 1.3;
-}
-.dolphin2{
+.bold2{
     font-size: 1.2em;
     font-weight: bold;
     color: #000;
+    z-index: 1;
 }
 .wo{
     font-size: .8em;
     display: inline-block; /* ← 回転に必要 */
     transform: rotate(15deg); /* ← 回転の角度（単位は deg） */
-    
+    z-index: 1;
 }
-.smartphone{
-    width: 320px;
-    height: 600px;
-    z-index: -5; /* 優先的に重ねるためのz-index */
-    top: 55%; /* 親要素の中央 */
-    left: 50%; /* 親要素の中央 */
-    transform: translate(-50%, -50%);
+.rodo{
+    width: 150px;
+    height: 35px;
+    z-index: 1;
+    display: none;
+    margin: auto;
+}
+.line{
+    width: 80%;
+    border: solid 1.5px rgba(101, 219, 255, 0.1);
+    margin: 0 auto;
 }
 /*-----------スクロールbox--------------*/
-
- 
-.scroll-wrapper {
-    width: 100%;         /* 親コンテナの幅 */
-    overflow: hidden;    /* 横スクロールを有効にする */
-    white-space: nowrap; /* 中身を横並びにする */
-    scroll-behavior: smooth;
-    position: relative;  /* 矢印を絶対位置に配置するために必要 */
-    scrollbar-width: none;         /* Firefoxで非表示 */
-    -ms-overflow-style: none;      /* IEで非表示 */
-    margin: 2em 0;
+.scroll-cover {
+    position: relative;
 }
-.scroll-wrapper::-webkit-scrollbar {
-    display: none;                 /* Chrome, Safariで非表示 */
+.items {
+    margin: 2em auto 3em;
 }
-
-.scroll-track {
-    display: inline-block; /* 子要素を横並びにする */
-    white-space: nowrap;   /* 子要素の折り返しを防ぐ */
-    animation: scrollLoop 20s linear infinite;
-}
-
-  .item {
-    display: inline-block;
-    width: 1000px;
-    height: 450px;
-    background-color: lightblue;
-    margin: 0 10px;
-    text-align: center;
-    line-height: 150px;
+.item {
+    width: 50vw;
+    height: 100%;
     border-radius: 20px;
-    padding-bottom: 40px;
-  }
-  .a{
+    border: solid 40px rgba(7, 140, 160, .3);
+    pointer-events: none;
+    margin: 0 auto;
+    display: block;
+}
+
+.arrow-left, .arrow-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.200);
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 20px;
+    user-select: none;
+}
+
+.arrow-left {
+    left: 10px;
+}
+
+.arrow-right {
+    right: 10px;
+}
+/*-----------ボタン--------------*/
+
+.dots {
+    position: absolute;
+    bottom: 10px;       /* 下に表示 */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: white; /* 選択中の丸 */
+}
+.a{
     margin-right: 50px;
-  }
-/*-----------スクロールbox--------------*/
-p{
+}
+
+/*-----------フッター--------------*/
+.foot{
+    display: flex;
+    flex-direction: row-reverse;
+    list-style-type: none;
+}
+.footer-cover *{
+    color: #fff;
+}
+.footer-cover{
+    background-color: rgb(90, 134, 149);
+    padding: 1em;
+}
+.copy{
     text-align: center;
+}
+.copy span{
+    font-size: 13px;
+    opacity: .5;
+}
+.saito{
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    text-decoration: none;
+    width: 20em;
+    height: 100%;
+}
+.saito p{
+    font-size: .9em;
+    text-align: center;
+    margin: 10px 20px;
+}
+.saito img{
+    display: block;
+    margin: 3% auto;
+    width: 200px;
+    height: 40px;
 }

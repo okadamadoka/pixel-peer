@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>thank you for playing!</title>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Zen+Kurenaido&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="end.css">
+  <link rel="stylesheet" href="../css/tutorial.css">
+  <link rel="icon" href="../img/favicon.ico">
+</head>
+<body class="dotgothic16-regular">
+  <div id="loader">Now loading…</div>
+  <div class="game-wrapper"></div>
+
+  <div id="message">
+    <p>thank you for playing！</p>
+    <p>ここまで遊んでくれて ありがとうございます！</p>
+    <p class="unfinished">本作は制作途中の作品です</p>
+  </div>
+
+  <div id="backButton" class="hidden fade div">
+    最初から遊ぶ
+  </div>
+
+  <script src="end.js"></script>
+  <script>
+  Promise.all([
+  new Promise(resolve => window.addEventListener('load', resolve)), // ページ読み込み完了
+  new Promise(resolve => setTimeout(resolve, 1500)) // 最低1.5秒待つ
+    ]).then(() => {
+      const loader = document.getElementById('loader');
+      const game = document.querySelector('.game-wrapper');
+
+      loader.style.opacity = 0; // フェードアウト
+
+      setTimeout(() => {
+        loader.remove();
+        game.remove();
+      }, 500);
+    });
+  </script>
+</body>
+</html>
