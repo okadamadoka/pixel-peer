@@ -18,8 +18,8 @@ const box = {
       {
       item: "紙",
       img: "../img/paper.png",
-      x: 40,
-      y: 65,
+      x: 320,
+      y: 350,
       width: 32,
       height: 32,
       branch:"04",
