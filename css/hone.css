@@ -1,0 +1,132 @@
+#smartphoneUI{
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+}
+img, a, button {
+  user-select: none;
+}
+#smartphoneUI {
+  margin: 0 auto;
+  width: 340px;
+  height: 695px;
+  transition: top 0.4s ease;
+}
+
+#phoneFrame {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 10;
+  pointer-events: none;
+  background-color: #445e64;
+  /*image-rendering: pixelated; ピクセルボケ見たいのなくすのだ*/
+}
+
+.phoneScreen {
+  width: 200px;
+  height: 540px;
+  padding: 5px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.5s;
+  position: relative;
+}
+/*------------ここの下はスマホの矢印--------------*/
+.hone-reset{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.200);
+  border-radius: 20px;
+  padding: 0 10px 2px;
+  cursor: pointer;
+  bottom: 10px;
+  right: 10px;
+  width: 3rem;
+  height: 1rem;
+}
+/*------------ここの下はスマホの画面--------------*/
+.fixed{
+  margin: 1.5em 0;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #69929c;
+}
+/*------------ここの下はスマホの専用画面クラス--------------*/
+/*イルカ*/
+.windou{
+  position: absolute;
+  left: 0;
+  bottom: 3em;
+  text-align: center;
+  display: none;
+  width: 298px;
+}
+
+.dolphin {
+  width: 150px;
+  height: 150px;
+  cursor: pointer; /* ← これ！ */
+}
+
+.kari{
+  text-align: center;
+  margin-top: 3em;
+}
+
+.center-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px 26px;
+  background: rgba(0,0,0,.5);
+  color: white;
+  font-size: 20px;
+  border-radius: 10px;
+  z-index: 20;
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+
+.center-message.fade-out {
+  opacity: 0;
+}
+/*イルカ-自動メッセージ*/
+.hintcover{
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; /* クリック邪魔しない */
+}
+
+.hintcover.show {
+  opacity: 1;
+}
+.hint{
+  width: 1.4em;
+  height: 1.4em;
+  text-align: center;
+  margin: 3px auto;
+  font-size: 1.4em;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.2; }
+}
+
+/*マップ*/
+.map{
+  color: #445e64;
+  text-decoration: none;
+  margin: 10px 0;
+  display: block;
+}
+/*インベントリ*/

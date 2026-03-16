@@ -1,0 +1,57 @@
+.tenkey-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(200, 200, 200, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.tenkey-panel {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.85);
+  padding: 20px;
+  border: 3px solid #fff;
+  border-radius: 10px;
+  z-index: 20;
+  width: 250px;
+  text-align: center;
+}
+
+.tenkey-display {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: white;
+  background: #222;
+  padding: 10px;
+  border-radius: 5px;
+  letter-spacing: 3px;
+  width: 230px;
+  height: 60.8px;
+}
+
+.tenkey-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.tenkey-btn {
+  font-size: 22px;
+  padding: 10px 0;
+  border-radius: 6px;
+}
+
+.tenkey-del,
+.tenkey-ok,
+.tenkey-cancel {
+  font-size: 18px;
+  margin: 4px;
+  padding: 6px 20px;
+  border-radius: 5px;
+}
