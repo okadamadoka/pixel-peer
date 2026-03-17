@@ -6,7 +6,6 @@ function updateView() {
   const linkElem = document.getElementById('item-link');
   const textdiv = document.getElementById('dolphinTalk');
   const back = document.querySelector('.phoneScreen');
-  const reset = document.querySelector('.hone-reset');
   
   // 一回クリア
   linkElem.innerHTML = '';
@@ -110,11 +109,14 @@ function updateView() {
   // 矢印クリックでインデックスを前後に
 document.querySelector('.hone-reset').addEventListener('click', () => {
   cIndex = (cIndex + 1) % youso.length;
+  button1();
   updateView();
 });
 function button1(){
+  const reset = document.querySelector('.hone-reset');
   const nexIndex = (cIndex + 1) % youso.length;
-  reset.textContent = youso[nexIndex];
+  reset.textContent = youso[nexIndex].name;
+  //console.log("試し",youso[nexIndex].name);
 }
 updateView();
 button1();
